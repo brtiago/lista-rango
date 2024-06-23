@@ -1,4 +1,4 @@
-package dev.tiago.lista_rango.model;
+package dev.tiago.lista_rango.domain.entities;
 
 public enum CategoriaProduto {
     ACOMPANHAMENTOS,

@@ -1,4 +1,4 @@
-package dev.tiago.lista_rango.model;
+package dev.tiago.lista_rango.domain.entities;
 
 import java.awt.image.BufferedImage;
 import java.math.BigDecimal;
@@ -11,7 +11,6 @@ public class Produto {
     private CategoriaProduto categoriaProduto;
     private Promocao promocao;
 
-    @Override
     public String toString() {
         return "Produto{" +
                 "id=" + id +
@@ -22,4 +21,6 @@ public class Produto {
                 ", promocao=" + promocao +
                 '}';
     }
+
+
 }
