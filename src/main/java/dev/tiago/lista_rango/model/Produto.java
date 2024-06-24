@@ -1,4 +1,4 @@
-package dev.tiago.lista_rango.domain.entities;
+package dev.tiago.lista_rango.model;
 
 import java.awt.image.BufferedImage;
 import java.math.BigDecimal;
