@@ -1,6 +1,7 @@
-package dev.tiago.lista_rango.domain.entities;
+package dev.tiago.lista_rango.model;
 
 import java.awt.image.BufferedImage;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Restaurante {
@@ -8,7 +9,7 @@ public class Restaurante {
     private BufferedImage foto;
     private String nome;
     private String endereco;
-    private String funcionamento;
+    private LocalDateTime funcionamento;
     private List<Produto> produtos;
 
     public String toString() {
@@ -22,15 +23,12 @@ public class Restaurante {
                 '}';
     }
 
-
     public Restaurante(
             BufferedImage foto,
             String nome,
             String endereco,
-            String funcionamento,
+            LocalDateTime funcionamento,
             List<Produto> produtos) {
-
-        
 
         this.foto = foto;
         this.nome = nome;
