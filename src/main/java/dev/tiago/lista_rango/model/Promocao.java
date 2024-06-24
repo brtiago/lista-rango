@@ -1,13 +1,14 @@
-package dev.tiago.lista_rango.domain.entities;
+package dev.tiago.lista_rango.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class Promocao {
     private Long id;
     private boolean ativa;
     private String descricao;
     private BigDecimal precoPromocional;
-    private String periodo;
+    private LocalDateTime periodo;
 
     @Override
     public String toString() {
