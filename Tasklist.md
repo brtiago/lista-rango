@@ -12,20 +12,20 @@
 - [ ] Excluir um produto de um restaurante
 
 #### O cadastro do restaurante precisa ter os seguintes campos:
-- [ ] Foto do restaurante
-- [ ] Nome do restaurante
-- [ ] Endereço do restaurante
-- [ ] Horários de funcionamento do restaurante (ex.: De Segunda à Sexta das 09h as 18h e de Sabado à Domingo das 11h as 20h).
+- [x] Foto do restaurante
+- [x] Nome do restaurante
+- [x] Endereço do restaurante
+- [x] Horários de funcionamento do restaurante (ex.: De Segunda à Sexta das 09h as 18h e de Sabado à Domingo das 11h as 20h).
 
 #### O cadastro de produtos do restaurante precisa ter os seguintes campos:
-- [ ] Foto do produto
-- [ ] Nome do produto
-- [ ] Preço do produto
-- [ ] Categoria do produto (ex.: Doce, Salgados, Sucos...)
+- [x] Foto do produto
+- [x] Nome do produto
+- [x] Preço do produto
+- [x] Categoria do produto (ex.: Doce, Salgados, Sucos...)
 
 #### Quando o Produto for colocado em promoção, precisa ter os seguintes campos:
-- [ ] Descrição para a promoção do produto (ex.: Chopp pela metade do preço)
-- [ ] Preço promocional
+- [x] Descrição para a promoção do produto (ex.: Chopp pela metade do preço)
+- [x] Preço promocional
 - [ ] Dias da semana e o horário em que o produto deve estar em promoção
 
 #### Formato de horários
