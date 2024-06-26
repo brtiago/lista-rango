@@ -1,0 +1,38 @@
+{
+  "id": "0001",
+  "foto": "restaurante.jpg",
+  "nome": "Restaurante Marazul",
+  "endereco": "Av. João Candido, 31",
+  "funcionamento": [
+    {
+      "diainicial": "segunda",
+      "diafinal": "sexta",
+      "horainicial": "09:00",
+      "horafinal": "20:00"
+    }
+  ],
+  "produtos": [
+    {
+      "id": "0012",
+      "foto": "canjica.jpeg",
+      "nome": "Canjica",
+      "quantidade": 20,
+      "preco": 20.00,
+      "categoria": "SOBREMESAS",
+      "promocao": {
+        "ativa": true,
+        "id": "005",
+        "descricao": "Canjica pela metade do preço",
+        "preco": 10.00,
+        "periodo": [
+          {
+            "diainicial": "segunda",
+            "diafinal": "sexta",
+            "horainicial": "09:00",
+            "horafinal": "20:00"
+          }
+        ]
+      }
+    }
+  ]
+}
