@@ -1,24 +1,36 @@
 package dev.tiago.lista_rango.controller;
 
+import dev.tiago.lista_rango.model.Restaurante;
+import dev.tiago.lista_rango.repository.RestauranteRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
-@RequestMapping("/api/v1/restaurante")
-@Tag(name = "restaurante", description = "Gerenciamento de restaurantes")
+@RequestMapping("/api/v1/restaurantes")
+@Tag(name = "restaurantes", description = "Gerenciamento de restaurantes")
 public class RestauranteController {
+
+    private RestauranteRepository repository;
+
+    public RestauranteController(RestauranteRepository repository) {
+        this.repository = repository;
+    }
 
     @Operation(summary = "Exibe uma lista de restaurantes")
     @GetMapping
-    public void listarRestaurantes() {
-        System.out.println("lista");
+    public List<Restaurante> getRestaurantes() {
+        return repository.findAll();
     }
 
     @Operation(summary = "Exibir restaurante pelo ID")
-    @GetMapping("{restauranteId}")
-    public void listarRestaurantPorId() {
-        System.out.println("lista restaurante");
+    @GetMapping("/{restaurante}")
+    public Optional<Restaurante> getRestaurantById(@PathVariable("id") Long id) {
+        return repository.findById(id);
     }
 
     @Operation(summary = "Atualizar restaurante")
