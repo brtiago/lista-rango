@@ -12,7 +12,7 @@
 	<artifactId>lista-rango</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>lista-rango</name>
-	<description>Criar uma API RESTful capaz de gerenciar os restaurantes e os produtos do seu cardápio.</description>
+	<description>Uma API RESTful capaz de gerenciar os restaurantes e os produtos do seu cardápio.</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -72,6 +72,12 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.5.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 	<build>
