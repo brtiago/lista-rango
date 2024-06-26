@@ -29,8 +29,8 @@ public class RestauranteController {
 
     @Operation(summary = "Exibir restaurante pelo ID")
     @GetMapping("/{restauranteId}")
-    public void getRestaurantById(@PathVariable("id") Long id) {
-        // FIXME Buscar Restaurante por id.
+    public ResponseEntity<Restaurante> buscarPorId(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(service.buscarPorId(id));
     }
 
     @Operation(summary = "Atualizar restaurante")
