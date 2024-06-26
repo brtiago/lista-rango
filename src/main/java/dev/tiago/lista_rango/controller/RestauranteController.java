@@ -1,13 +1,13 @@
 package dev.tiago.lista_rango.controller;
 
 import dev.tiago.lista_rango.model.Restaurante;
-import dev.tiago.lista_rango.repository.RestauranteRepository;
+import dev.tiago.lista_rango.service.impl.RestauranteServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -15,70 +15,70 @@ import java.util.Optional;
 @Tag(name = "restaurantes", description = "Gerenciamento de restaurantes")
 public class RestauranteController {
 
-    private RestauranteRepository repository;
+    private RestauranteServiceImpl service;
 
-    public RestauranteController(RestauranteRepository repository) {
-        this.repository = repository;
+    public RestauranteController(RestauranteServiceImpl service) {
+        this.service = service;
     }
 
     @Operation(summary = "Exibe uma lista de restaurantes")
     @GetMapping
-    public List<Restaurante> getRestaurantes() {
-        return repository.findAll();
+    public ResponseEntity<Iterable<Restaurante>> buscarTodos() {
+        return ResponseEntity.ok(service.buscarTodos());
     }
 
     @Operation(summary = "Exibir restaurante pelo ID")
-    @GetMapping("/{restaurante}")
-    public Optional<Restaurante> getRestaurantById(@PathVariable("id") Long id) {
-        return repository.findById(id);
+    @GetMapping("/{restauranteId}")
+    public void getRestaurantById(@PathVariable("id") Long id) {
+        // FIXME Buscar Restaurante por id.
     }
 
     @Operation(summary = "Atualizar restaurante")
     @PutMapping("/{restauranteId}")
     public void atualizarRestaurantPorId() {
-        System.out.println("Editar restaurante");
+        // FIXME atualizar restaurante por id
     }
 
     @Operation(summary = "Cadastra um novo restaurante")
     @PostMapping
     public void cadastrarRestaurantes() {
-        System.out.println("cadastrar");
+        // FIXME Cadastrar novo Restaurante.
     }
 
     @Operation(summary = "Exclui restaurante")
     @DeleteMapping("/{restauranteId}")
     public void excluirRestaurante() {
-        System.out.println("resutaurante removido");
+        // FIXME Remover Restaurante.
     }
 
     @Operation(summary = "Listar produtos de um restaurante")
     @GetMapping("/{restauranteId}/produto")
     public void listarProdutoRestaurante() {
-        System.out.println("lista produtos restaurante");
+        // FIXME Listar Produtos de um Restaurante.
     }
 
     @Operation(summary = "Cadastra novo produto de um restaurante")
     @PostMapping("/{restauranteId}/produto")
     public void cadastrarProdutoRestaurante() {
-        System.out.println("cadastrar");
+        // FIXME Cadastrar produto em um restaurante.
     }
 
     @Operation(summary = "Atualizar produto restaurante")
     @PutMapping("/{restauranteId}/{produtoId}")
     public void atualizarProdutoRestaurantPorId() {
-        System.out.println("Editar produto restaurante");
+        // FIXME Atualizar produto de um Restaurante.
     }
 
     @Operation(summary = "Exclui produto de um restaurante")
     @DeleteMapping("/{restauranteId}/{produtoId}")
     public void excluirProdutoRestaurante() {
-        System.out.println("Produto resutaurante removido");
+        // FIXME Excluir produto de um Restaurante.
     }
 
     @Operation(summary = "Listar produto de um restaurante pelo seu id")
     @GetMapping("/{restauranteId}/{produtoId}")
     public void listarProdutoPorIdRestaurante() {
-        System.out.println("lista produtos restaurante");
+        // FIXME Listar produto com um id especifico de um restaurante
     }
 
 
