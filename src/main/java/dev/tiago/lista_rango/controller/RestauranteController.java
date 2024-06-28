@@ -4,7 +4,7 @@ import dev.tiago.lista_rango.model.Restaurante;
 import dev.tiago.lista_rango.service.impl.RestauranteServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,9 +46,11 @@ public class RestauranteController {
     }
 
     @Operation(summary = "Exclui restaurante")
+    @Transactional
     @DeleteMapping("/{restauranteId}")
-    public void excluirRestaurante() {
-        // FIXME Remover Restaurante.
+    public ResponseEntity excluirRestaurante(Long id) {
+        service.remover(id);
+        return ResponseEntity.noContent().build();
     }
 
     @Operation(summary = "Listar produtos de um restaurante")
