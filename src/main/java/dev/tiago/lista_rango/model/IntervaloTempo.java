@@ -1,6 +1,7 @@
 package dev.tiago.lista_rango.model;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class IntervaloTempo {
     private final LocalDateTime horarioAbertura;
@@ -20,6 +21,7 @@ public class IntervaloTempo {
 
     private boolean isIntervalValid(LocalDateTime dateTime) {
         int minutes = dateTime.getMinute();
+
         return minutes % 15 == 0;
     }
 
