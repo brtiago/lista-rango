@@ -3,11 +3,8 @@ package dev.tiago.lista_rango.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.awt.image.BufferedImage;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
