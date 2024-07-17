@@ -8,17 +8,15 @@ import java.time.LocalTime;
 import java.util.Map;
 
 @Entity
-public class HorarioFuncionamento {
+public class Funcionamento extends Periodo {
 
     @Id
     private Long id;
 
     @ManyToOne
-    Restaurante restaurante;
+    Restaurant restaurant;
 
     DiaSemana dia;
-
-    private LocalTime aberturaa;
 
     private LocalTime fechamento;
 
