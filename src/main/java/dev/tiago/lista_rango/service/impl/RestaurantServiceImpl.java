@@ -1,12 +1,13 @@
 package dev.tiago.lista_rango.service.impl;
 
-import dev.tiago.lista_rango.model.DiaSemana;
 import dev.tiago.lista_rango.model.Funcionamento;
 import dev.tiago.lista_rango.model.Restaurant;
 import dev.tiago.lista_rango.repository.RestaurantRepository;
 import dev.tiago.lista_rango.service.RestaurantService;
+import dev.tiago.lista_rango.service.exception.BusinessException;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -63,7 +64,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
 
-    public void setOperatingHours(DiaSemana dia, String abertura, String fechamento) {
+    public void setOperatingHours(DayOfWeek dia, String abertura, String fechamento) {
         // Testar se a lista horarioFuncionamentos contem o dia da semana. Nao pode permitir cadastro do mesmo di amais de uma vez
         if (operatingHours.contains(dia)) {
 
