@@ -3,6 +3,8 @@
   Lista Rango
 </h1>
 
+![Logo](src/main/resources/assets/be43294e-4b68-43b0-9f03-d4221f293c45.webp)
+
 <p align="center">
  <img src="https://img.shields.io/static/v1?label=Linkedin&message=@tgribeiro&color=8257E5&labelColor=000000" alt="@tgribeiro" />
  <img src="https://img.shields.io/static/v1?label=Tipo&message=Desafio&color=8257E5&labelColor=000000" alt="Desafio" />
@@ -100,8 +102,8 @@ Criar uma API RESTful capaz de gerenciar restaurantes e os produtos do seu card�
 A URL da requisição deve ter o seguinte formato:
 
 ```java
-    http://localhost:8080//api/v1/restaurants/{id}/
-    http://localhost:8080//api/v1/restaurants/{id}/products/{productid}
+    http://localhost:8080/api/v1/restaurants/{id}/
+    http://localhost:8080/api/v1/restaurants/{id}/products/{productid}
 ```
 
 A resposta deve ter o seguinte formato: **Ainda sendo implementado**
