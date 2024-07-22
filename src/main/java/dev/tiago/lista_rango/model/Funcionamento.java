@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Map;
 
@@ -16,9 +17,9 @@ public class Funcionamento extends Periodo {
     @ManyToOne
     Restaurant restaurant;
 
-    DiaSemana dia;
+    LocalDateTime diaSemana;
 
     private LocalTime fechamento;
 
-    private Map<DiaSemana, IntervaloTempo> horarios;
+    private Map<LocalDateTime, IntervaloTempo> horarios;
 }

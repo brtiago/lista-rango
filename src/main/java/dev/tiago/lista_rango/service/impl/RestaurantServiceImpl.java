@@ -1,12 +1,12 @@
 package dev.tiago.lista_rango.service.impl;
 
-import dev.tiago.lista_rango.model.DiaSemana;
 import dev.tiago.lista_rango.model.Funcionamento;
 import dev.tiago.lista_rango.model.Restaurant;
 import dev.tiago.lista_rango.repository.RestaurantRepository;
 import dev.tiago.lista_rango.service.RestaurantService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -44,7 +44,6 @@ public class RestaurantServiceImpl implements RestaurantService {
     public Restaurant create(Restaurant restaurantToCreate) {
         ofNullable(restaurantToCreate).orElseThrow(() -> new BusinessException("Restaurant to create must not be null."));
 
-
         if(restaurantToCreate.getId() != null && restaurantRepository.existsById(findById(restaurantToCreate.getId()))) {
             throw new IllegalArgumentException("Este restaurante já existe.");
         }
@@ -52,9 +51,14 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public void update(Long id, Restaurant restaurante) {
-        // FIXME Buscar Restaurante por id. Caso exista:
-        // FIXME Alterar Restaurante e salvar
+    public Restaurant update(Long id, Restaurant restaurant) {
+        Restaurant existingRestaurant = restaurantRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Restaurant not found with id: " + id));
+
+        existingRestaurant.setName(restaurant.getName());
+        existingRestaurant.setAddress(restaurant.getAddress());
+
+        return restaurantRepository.save(existingRestaurant);
     }
 
     @Override
@@ -63,7 +67,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
 
-    public void setOperatingHours(DiaSemana dia, String abertura, String fechamento) {
+    public void setOperatingHours(LocalDateTime dia, String abertura, String fechamento) {
         // Testar se a lista horarioFuncionamentos contem o dia da semana. Nao pode permitir cadastro do mesmo di amais de uma vez
         if (operatingHours.contains(dia)) {
 

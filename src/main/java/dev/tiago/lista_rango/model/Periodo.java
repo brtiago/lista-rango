@@ -8,6 +8,6 @@ public abstract class Periodo {
     protected LocalDateTime abertura;
     protected LocalDateTime fechamento;
 
-    protected LocalDate diaAbertura;
-    protected LocalDate diaFechamento;
+    protected LocalDateTime diaAbertura;
+    protected LocalDateTime diaFechamento;
 }
