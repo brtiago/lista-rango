@@ -1,5 +1,6 @@
 package dev.tiago.lista_rango.controller.exception;
 
+import dev.tiago.lista_rango.service.exception.BusinessException;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
