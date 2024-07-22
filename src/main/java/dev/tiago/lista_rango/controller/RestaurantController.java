@@ -1,8 +1,6 @@
 package dev.tiago.lista_rango.controller;
 
-import dev.tiago.lista_rango.controller.dto.CreateRestaurantDto;
 import dev.tiago.lista_rango.controller.dto.RestaurantDto;
-import dev.tiago.lista_rango.model.Restaurant;
 import dev.tiago.lista_rango.service.impl.RestaurantServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
