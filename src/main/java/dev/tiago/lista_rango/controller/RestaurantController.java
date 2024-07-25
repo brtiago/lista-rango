@@ -1,6 +1,8 @@
 package dev.tiago.lista_rango.controller;
 
+import dev.tiago.lista_rango.controller.dto.ProductDto;
 import dev.tiago.lista_rango.controller.dto.RestaurantDto;
+import dev.tiago.lista_rango.service.impl.ProductServiceImpl;
 import dev.tiago.lista_rango.service.impl.RestaurantServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -17,7 +19,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/v1/restaurants")
 @Tag(name = "Restaurants Controller", description = "Restful API for managing restaurants.")
-public record RestaurantController(RestaurantServiceImpl restaurantService) {
+public record RestaurantController(RestaurantServiceImpl restaurantService, ProductServiceImpl productService) {
 
     @GetMapping
     @Operation(summary = "Get all restaurants", description = "Retrieve a list of all registered restaurants")
@@ -44,7 +46,7 @@ public record RestaurantController(RestaurantServiceImpl restaurantService) {
 
 
     @PutMapping("/{id}")
-    @Operation(summary = "Update a restaurant", description = "Update the data of an existing user based on its ID")
+    @Operation(summary = "Update a restaurant", description = "Update the data of an existing restaurant based on its ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Restaurant updated successfully"),
             @ApiResponse(responseCode = "404", description = "Restaurant not found"),
@@ -84,40 +86,67 @@ public record RestaurantController(RestaurantServiceImpl restaurantService) {
     }
 
 
-
-
-
-
-
-    @Operation(summary = "Listar produtos de um restaurante")
-    @GetMapping("/{restauranteId}/produto")
-    public void listarProdutoRestaurante() {
-        // FIXME Listar Produtos de um Restaurante.
+    @GetMapping("/{id}/product")
+    @Operation(summary = "Get all products", description = "Retrieve a list of all registered products from a restaurant")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Operation successful")
+    })
+    public ResponseEntity<List<ProductDto>> findAllProducts() {
+        var products = productService.findAll();
+        var productsDto = products.stream().map(ProductDto::new).collect(Collectors.toList());
+        return ResponseEntity.ok(productsDto);
     }
 
-    @Operation(summary = "Cadastra novo produto de um restaurante")
-    @PostMapping("/{restauranteId}/produto")
-    public void cadastrarProdutoRestaurante() {
-        // FIXME Cadastrar produto em um restaurante.
+
+    @PostMapping("/{id}/product")
+    @Operation(summary = "Create a new restaurant", description = "Create a new restaurant and return the created data")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Restaurant created successfully"),
+            @ApiResponse(responseCode = "422", description = "Invalid restaurant data provided")
+    })
+    public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto) {
+        var product = productService.create(productDto.toModel());
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id")
+                .buildAndExpand(product.getId())
+                .toUri();
+        return ResponseEntity.created(location).body(new ProductDto(product));
     }
 
-    @Operation(summary = "Atualizar produto restaurante")
-    @PutMapping("/{restauranteId}/{produtoId}")
-    public void atualizarProdutoRestaurantPorId() {
-        // FIXME Atualizar produto de um Restaurante.
+    @PutMapping("/{id}/{productId}")
+    @Operation(summary = "Update a product", description = "Update the data of an existing product based on its ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Product updated successfully"),
+            @ApiResponse(responseCode = "404", description = "Product not found"),
+            @ApiResponse(responseCode = "422", description = "Invalid product data provided")
+    })
+    public ResponseEntity<ProductDto> updateProduct(@PathVariable Long id, @RequestBody ProductDto productDto) {
+        var product = productService.update(id, productDto.toModel());
+        return ResponseEntity.ok(new ProductDto(product));
     }
 
-    @Operation(summary = "Exclui produto de um restaurante")
-    @DeleteMapping("/{restauranteId}/{produtoId}")
-    public void excluirProdutoRestaurante() {
-        // FIXME Excluir produto de um Restaurante.
+
+    @DeleteMapping("/{id}/{productId}")
+    @Operation(summary = "Delete a product", description = "Delete an existing product based on its ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Product deleted successfully"),
+            @ApiResponse(responseCode = "404", description = "Product not found")
+    })
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        productService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
-    @Operation(summary = "Listar produto de um restaurante pelo seu id")
-    @GetMapping("/{restauranteId}/{produtoId}")
-    public void listarProdutoPorIdRestaurante() {
-        // FIXME Listar produto com um id especifico de um restaurante
-    }
 
+    @GetMapping("/{id}/{productId}")
+    @Operation(summary = "Get a product by ID", description = "Retrieve a specific product based on its ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Operation successful"),
+            @ApiResponse(responseCode = "404", description = "Product not found")
+    })
+    public ResponseEntity<ProductDto> findProductById(@PathVariable Long id) {
+        var product = productService.findById(id);
+        return ResponseEntity.ok(new ProductDto(product));
+    }
 
 }
