@@ -2,16 +2,21 @@ package dev.tiago.lista_rango.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Entity
 public class Promocao {
     @Id
     private Long id;
     private boolean ativa;
     private String descricao;
-    private BigDecimal precoPromocional;
+    @OneToMany
+    private List<Produto> produtos;
+    private BigDecimal desconto;
     private LocalDateTime periodo;
     @Override
     public String toString() {
@@ -19,7 +24,7 @@ public class Promocao {
                 "id=" + id +
                 ", ativa=" + ativa +
                 ", descricao='" + descricao + '\'' +
-                ", precoPromocional=" + precoPromocional +
+                ", precoPromocional=" + desconto +
                 ", periodo='" + periodo + '\'' +
                 '}';
     }
@@ -48,12 +53,20 @@ public class Promocao {
         this.descricao = descricao;
     }
 
-    public BigDecimal getPrecoPromocional() {
-        return precoPromocional;
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 
-    public void setPrecoPromocional(BigDecimal precoPromocional) {
-        this.precoPromocional = precoPromocional;
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    public BigDecimal getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(BigDecimal desconto) {
+        this.desconto = desconto;
     }
 
     public LocalDateTime getPeriodo() {
