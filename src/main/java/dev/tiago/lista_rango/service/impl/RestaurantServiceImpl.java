@@ -47,7 +47,7 @@ public class RestaurantServiceImpl implements RestaurantService {
         if(restaurantToCreate.getId() != null && restaurantRepository.existsById(findById(restaurantToCreate.getId()))) {
             throw new IllegalArgumentException("Este restaurante já existe.");
         }
-        return null;
+        return this.restaurantRepository.save(restaurantToCreate);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public void delete(Long id) {
-        // FIXME Remover Restaurante por id
+        restaurantRepository.deleteById(id);
     }
 
 
