@@ -16,7 +16,7 @@ public record PromocaoDto(
         Long id,
         boolean ativa,
         String descricao,
-        List<Produto>produtos,
+        List<Produto> produtos,
         BigDecimal desconto,
         LocalDateTime periodo) {
 
