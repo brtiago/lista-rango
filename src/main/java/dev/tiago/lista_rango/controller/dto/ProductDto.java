@@ -4,8 +4,6 @@ import dev.tiago.lista_rango.model.CategoriaProduto;
 import dev.tiago.lista_rango.model.Produto;
 import dev.tiago.lista_rango.model.Promocao;
 import static java.util.Optional.ofNullable;
-import static java.util.Collections.emptyList;
-import static java.util.stream.Collectors.toList;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -17,7 +15,7 @@ public record ProductDto(
         int quantity,
         BigDecimal preco,
         CategoriaProduto categoriaProduto,
-        Promocao promocao) {
+        Optional<Promocao> promocao) {
 
     public ProductDto(Produto model) {
         this (
@@ -28,7 +26,6 @@ public record ProductDto(
                 model.getPreco(),
                 model.getCategoriaProduto(),
                 ofNullable(model.getPromocao())
-                this.promocao = promocao;
         );
     }
 
@@ -40,12 +37,7 @@ public record ProductDto(
         model.setQuantity(this.quantity);
         model.setPreco(this.preco);
         model.setCategoriaProduto(this.categoriaProduto);
-        model.setPromocao(
-                ofNullable(this.promocao)
-                        .orElse(emptyList())
-                        .stream()
-                        .map(PromocaoDto::toModel)
-                        .collect(toList()));
+        model.setPromocao(this.promocao.orElse(null));
         return model;
     }
 }
