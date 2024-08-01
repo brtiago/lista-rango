@@ -2,15 +2,11 @@ package dev.tiago.lista_rango.controller.dto;
 
 import dev.tiago.lista_rango.model.Produto;
 import dev.tiago.lista_rango.model.Promocao;
-import jakarta.persistence.OneToMany;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static java.util.Collections.emptyList;
-import static java.util.Optional.ofNullable;
-import static java.util.stream.Collectors.toList;
 
 public record PromocaoDto(
         Long id,
