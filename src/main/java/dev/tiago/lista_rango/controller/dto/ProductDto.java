@@ -8,6 +8,7 @@ import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 public record ProductDto(
         Long id,
@@ -18,6 +19,19 @@ public record ProductDto(
         CategoriaProduto categoriaProduto,
         Promocao promocao) {
 
+    public ProductDto(Produto model) {
+        this (
+                model.getId(),
+                model.getFoto(),
+                model.getNome(),
+                model.getQuantity(),
+                model.getPreco(),
+                model.getCategoriaProduto(),
+                ofNullable(model.getPromocao())
+                this.promocao = promocao;
+        );
+    }
+
     public Produto toModel() {
         Produto model = new Produto();
         model.setId(this.id);
@@ -26,7 +40,12 @@ public record ProductDto(
         model.setQuantity(this.quantity);
         model.setPreco(this.preco);
         model.setCategoriaProduto(this.categoriaProduto);
-        model.setPromocao(ofNullable(this.promocao).orElse(emptyList()).stream().map(PromocaoDto::toModel).collect(toList()));
+        model.setPromocao(
+                ofNullable(this.promocao)
+                        .orElse(emptyList())
+                        .stream()
+                        .map(PromocaoDto::toModel)
+                        .collect(toList()));
         return model;
     }
 }
