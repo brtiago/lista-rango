@@ -4,6 +4,8 @@ import dev.tiago.lista_rango.model.Funcionamento;
 import dev.tiago.lista_rango.model.Restaurant;
 import dev.tiago.lista_rango.repository.RestaurantRepository;
 import dev.tiago.lista_rango.service.RestaurantService;
+import dev.tiago.lista_rango.service.exception.BusinessException;
+import dev.tiago.lista_rango.service.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -44,7 +46,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     public Restaurant create(Restaurant restaurantToCreate) {
         ofNullable(restaurantToCreate).orElseThrow(() -> new BusinessException("Restaurant to create must not be null."));
 
-        if(restaurantToCreate.getId() != null && restaurantRepository.existsById(findById(restaurantToCreate.getId()))) {
+        if(restaurantToCreate.getId() != null && restaurantRepository.existsById((restaurantToCreate.getId()))) {
             throw new IllegalArgumentException("Este restaurante já existe.");
         }
         return this.restaurantRepository.save(restaurantToCreate);
@@ -53,7 +55,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public Restaurant update(Long id, Restaurant restaurant) {
         Restaurant existingRestaurant = restaurantRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Restaurant not found with id: " + id));
+                .orElseThrow(() -> new NotFoundException("Restaurant not found with id: " + id));
 
         existingRestaurant.setName(restaurant.getName());
         existingRestaurant.setAddress(restaurant.getAddress());
