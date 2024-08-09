@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
     public Produto create(Produto productToCreate) {
         ofNullable(productToCreate).orElseThrow(() -> new RuntimeException("Restaurant to create must not be null."));
 
-        if(productToCreate.getId() != null && productRepository.existsById(findById(productToCreate.getId()))) {
+        if(productToCreate.getId() != null && productRepository.existsById(productToCreate.getId())) {
             throw new IllegalArgumentException("Este produto já existe.");
         }
 
