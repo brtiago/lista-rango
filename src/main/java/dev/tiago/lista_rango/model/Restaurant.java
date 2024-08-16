@@ -9,15 +9,32 @@ public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String logo;
+    private String logoUrl;
     private String name;
     private String address;
+    private String contato;
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
+    public String getContato() {
+        return contato;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
+    }
 
     @OneToMany
-    private List<Funcionamento> horarioFuncionamentos;
+    private List<HorarioFuncionamento> horarioFuncionamentos;
 
     @OneToMany
-    private List<Produto> produtos;
+    private List<Prato> pratos;
 
     public Long getId() {
         return id;
@@ -25,14 +42,6 @@ public class Restaurant {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
     }
 
     public String getName() {
@@ -51,19 +60,19 @@ public class Restaurant {
         this.address = address;
     }
 
-    public List<Funcionamento> getHorarioFuncionamentos() {
+    public List<HorarioFuncionamento> getHorarioFuncionamentos() {
         return horarioFuncionamentos;
     }
 
-    public void setHorarioFuncionamentos(List<Funcionamento> horarioFuncionamentos) {
+    public void setHorarioFuncionamentos(List<HorarioFuncionamento> horarioFuncionamentos) {
         this.horarioFuncionamentos = horarioFuncionamentos;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public List<Prato> getProdutos() {
+        return pratos;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setProdutos(List<Prato> pratos) {
+        this.pratos = pratos;
     }
 }

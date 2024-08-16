@@ -1,7 +1,7 @@
 package dev.tiago.lista_rango.repository;
 
-import dev.tiago.lista_rango.model.Produto;
+import dev.tiago.lista_rango.model.Prato;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductRepository extends JpaRepository<Produto, Long> {
+public interface ProductRepository extends JpaRepository<Prato, Long> {
 }
