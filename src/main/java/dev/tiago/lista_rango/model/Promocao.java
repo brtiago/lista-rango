@@ -15,7 +15,7 @@ public class Promocao {
     private boolean ativa;
     private String descricao;
     @OneToMany
-    private List<Produto> produtos;
+    private List<Prato> pratos;
     private BigDecimal desconto;
     private LocalDateTime periodo;
     @Override
@@ -53,12 +53,12 @@ public class Promocao {
         this.descricao = descricao;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public List<Prato> getProdutos() {
+        return pratos;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setProdutos(List<Prato> pratos) {
+        this.pratos = pratos;
     }
 
     public BigDecimal getDesconto() {

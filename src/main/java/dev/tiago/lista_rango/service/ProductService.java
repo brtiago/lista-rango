@@ -1,18 +1,18 @@
 package dev.tiago.lista_rango.service;
 
-import dev.tiago.lista_rango.model.Produto;
+import dev.tiago.lista_rango.model.Prato;
 
 import java.util.Set;
 
 public interface ProductService {
 
-    public Set<Produto> findAll();
+    public Set<Prato> findAll();
 
-    public Produto findById(Long id);
+    public Prato findById(Long id);
 
-    public Produto create(Produto product);
+    public Prato create(Prato product);
 
-    public Produto update(Long id, Produto product);
+    public Prato update(Long id, Prato product);
 
     public void delete(Long id);
 }

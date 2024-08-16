@@ -1,11 +1,10 @@
 package dev.tiago.lista_rango.service.impl;
 
-import dev.tiago.lista_rango.model.Produto;
+import dev.tiago.lista_rango.model.Prato;
 import dev.tiago.lista_rango.repository.ProductRepository;
 import dev.tiago.lista_rango.service.ProductService;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -21,15 +20,15 @@ public class ProductServiceImpl implements ProductService {
         this.productRepository = productRepository;
     }
 
-    public Set<Produto> findAll() {
+    public Set<Prato> findAll() {
         return new HashSet<>(this.productRepository.findAll());
     }
 
-    public Produto findById(Long id) {
+    public Prato findById(Long id) {
         return this.productRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
-    public Produto create(Produto productToCreate) {
+    public Prato create(Prato productToCreate) {
         ofNullable(productToCreate).orElseThrow(() -> new RuntimeException("Restaurant to create must not be null."));
 
         if(productToCreate.getId() != null && productRepository.existsById(productToCreate.getId())) {
@@ -40,10 +39,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
-    public Produto update(Long id, Produto product) {
-        Produto existingProduct = productRepository.findById(id)
+    public Prato update(Long id, Prato product) {
+        Prato existingProduct = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
-        existingProduct.setFoto(product.getFoto());
+        existingProduct.setFotoUrl(product.getFotoUrl());
         existingProduct.setNome(product.getNome());
         existingProduct.setQuantity(product.getQuantity());
         existingProduct.setPreco(product.getPreco());

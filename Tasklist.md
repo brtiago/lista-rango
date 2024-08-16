@@ -6,7 +6,7 @@
 - [ ] Alterar dados um restaurante
 - [ ] Excluir um restaurante
 ##### Produtos:
-- [ ] Listar todos os produtos de um restautante
+- [ ] Listar todos os pratos de um restautante
 - [ ] Criar um produto de um restaurante
 - [ ] Alterar um produto de um restaurante
 - [ ] Excluir um produto de um restaurante
@@ -17,7 +17,7 @@
 - [x] Endereço do restaurante
 - [x] Horários de funcionamento do restaurante (ex.: De Segunda à Sexta das 09h as 18h e de Sabado à Domingo das 11h as 20h).
 
-#### O cadastro de produtos do restaurante precisa ter os seguintes campos:
+#### O cadastro de pratos do restaurante precisa ter os seguintes campos:
 - [x] Foto do produto
 - [x] Nome do produto
 - [x] Preço do produto
@@ -29,7 +29,7 @@
 - [ ] Dias da semana e o horário em que o produto deve estar em promoção
 
 #### Formato de horários
-- [ ] É necessário tratar os campos que indicam horários de funcionamento e horário para as promoções dos produtos.
+- [ ] É necessário tratar os campos que indicam horários de funcionamento e horário para as promoções dos pratos.
 - [ ] Os campos devem possuir o formato HH:mm.
 - [ ] Os horários devem possuir intervalo mínimo de 15 minutos.
 

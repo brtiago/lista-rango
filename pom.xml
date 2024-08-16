@@ -12,7 +12,7 @@
 	<artifactId>lista-rango</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>lista-rango</name>
-	<description>Uma API RESTful capaz de gerenciar os restaurantes e os produtos do seu cardápio.</description>
+	<description>Uma API RESTful capaz de gerenciar os restaurantes e os pratos do seu cardápio.</description>
 	<url/>
 	<licenses>
 		<license/>

@@ -1,7 +1,7 @@
 package dev.tiago.lista_rango.controller.dto;
 
 import dev.tiago.lista_rango.model.CategoriaProduto;
-import dev.tiago.lista_rango.model.Produto;
+import dev.tiago.lista_rango.model.Prato;
 import dev.tiago.lista_rango.model.Promocao;
 import static java.util.Optional.ofNullable;
 
@@ -17,10 +17,10 @@ public record ProductDto(
         CategoriaProduto categoriaProduto,
         Optional<Promocao> promocao) {
 
-    public ProductDto(Produto model) {
+    public ProductDto(Prato model) {
         this (
                 model.getId(),
-                model.getFoto(),
+                model.getFotoUrl(),
                 model.getNome(),
                 model.getQuantity(),
                 model.getPreco(),
@@ -29,11 +29,11 @@ public record ProductDto(
         );
     }
 
-    public Produto toModel() {
-        Produto model = new Produto();
+    public Prato toModel() {
+        Prato model = new Prato();
         model.setId(this.id);
         model.setNome(this.nome);
-        model.setFoto(this.foto);
+        model.setFotoUrl(this.foto);
         model.setQuantity(this.quantity);
         model.setPreco(this.preco);
         model.setCategoriaProduto(this.categoriaProduto);

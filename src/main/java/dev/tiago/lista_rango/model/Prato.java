@@ -2,16 +2,15 @@ package dev.tiago.lista_rango.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 import java.math.BigDecimal;
 
 @Entity
-public class Produto {
+public class Prato {
     @Id
     private Long id;
-    private String foto;
+    private String fotoUrl;
     private String nome;
     private int quantity;
     private BigDecimal preco;
@@ -20,9 +19,9 @@ public class Produto {
     private Promocao promocao;
 
     public String toString() {
-        return "Produto{" +
+        return "Prato{" +
                 "id=" + id +
-                ", foto=" +
+                ", fotoUrl=" +
                 ", nome='" + nome + '\'' +
                 ", preco=" + preco +
                 ", categoriaProduto=" + categoriaProduto +
@@ -38,12 +37,12 @@ public class Produto {
         this.id = id;
     }
 
-    public String getFoto() {
-        return foto;
+    public String getFotoUrl() {
+        return fotoUrl;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setFotoUrl(String fotoUrl) {
+        this.fotoUrl = fotoUrl;
     }
 
     public String getNome() {

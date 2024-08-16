@@ -1,6 +1,6 @@
 package dev.tiago.lista_rango.controller.dto;
 
-import dev.tiago.lista_rango.model.Produto;
+import dev.tiago.lista_rango.model.Prato;
 import dev.tiago.lista_rango.model.Promocao;
 
 import java.math.BigDecimal;
@@ -12,7 +12,7 @@ public record PromocaoDto(
         Long id,
         boolean ativa,
         String descricao,
-        List<Produto> produtos,
+        List<Prato> pratos,
         BigDecimal desconto,
         LocalDateTime periodo) {
 
@@ -21,7 +21,7 @@ public record PromocaoDto(
         model.setId(this.id);
         model.setAtiva(this.ativa);
         model.setDescricao(this.descricao);
-        model.setProdutos(this.produtos);
+        model.setProdutos(this.pratos);
         model.setDesconto(this.desconto);
         model.setPeriodo(this.periodo);
         return model;

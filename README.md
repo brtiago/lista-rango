@@ -3,7 +3,6 @@
   Lista Rango
 </h1>
 
-![Logo](src/main/resources/assets/be43294e-4b68-43b0-9f03-d4221f293c45.webp)
 
 <p align="center">
  <img src="https://img.shields.io/static/v1?label=Linkedin&message=@tgribeiro&color=8257E5&labelColor=000000" alt="@tgribeiro" />
@@ -14,7 +13,7 @@
 Projeto final para conclusão do bootcamp [Desenvolvimento Java com IA](https://web.dio.me/track/coding-future-gft-desenvolvimento-java-com-ia) do site [DIO](https://www.dio.me/).
 
 ## 🎯 Objetivos
-Criar uma API RESTful capaz de gerenciar restaurantes e os produtos do seu cardápio.
+Criar uma API RESTful capaz de gerenciar restaurantes e os pratos do seu cardápio.
 
 ## ⚙️ Funcionalidades desejadas:
 #### Restaurantes
@@ -24,7 +23,7 @@ Criar uma API RESTful capaz de gerenciar restaurantes e os produtos do seu card�
 - [ ] Alterar dados um restaurante
 - [ ] Excluir um restaurante
 ##### Produtos:
-- [ ] Listar todos os produtos de um restautante
+- [ ] Listar todos os pratos de um restautante
 - [ ] Criar um produto de um restaurante
 - [ ] Alterar um produto de um restaurante
 - [ ] Excluir um produto de um restaurante
@@ -35,7 +34,7 @@ Criar uma API RESTful capaz de gerenciar restaurantes e os produtos do seu card�
 - [x] Endereço do restaurante
 - [x] Horários de funcionamento do restaurante (ex.: De Segunda à Sexta das 09h as 18h e de Sabado à Domingo das 11h as 20h).
 
-#### O cadastro de produtos do restaurante precisa ter os seguintes campos:
+#### O cadastro de pratos do restaurante precisa ter os seguintes campos:
 - [x] Foto do produto
 - [x] Nome do produto
 - [x] Preço do produto
@@ -47,7 +46,7 @@ Criar uma API RESTful capaz de gerenciar restaurantes e os produtos do seu card�
 - [ ] Dias da semana e o horário em que o produto deve estar em promoção
 
 #### Formato de horários
-- [ ] É necessário tratar os campos que indicam horários de funcionamento e horário para as promoções dos produtos.
+- [ ] É necessário tratar os campos que indicam horários de funcionamento e horário para as promoções dos pratos.
 - [ ] Os campos devem possuir o formato HH:mm.
 - [ ] Os horários devem possuir intervalo mínimo de 15 minutos.
 
@@ -58,7 +57,7 @@ Criar uma API RESTful capaz de gerenciar restaurantes e os produtos do seu card�
 ```json
 {
   "id": "0001",
-  "foto": "restaurante.jpg",
+  "fotoUrl": "restaurante.jpg",
   "nome": "Restaurante Marazul",
   "endereco": "Av. João Candido, 31, Cidade Nova",
   "funcionamento": [
@@ -69,10 +68,10 @@ Criar uma API RESTful capaz de gerenciar restaurantes e os produtos do seu card�
       "horafinal": "20:00"
     }
   ],
-  "produtos": [
+  "pratos": [
     {
       "id": "0012",
-      "foto": "canjica.jpeg",
+      "fotoUrl": "canjica.jpeg",
       "nome": "Canjica",
       "quantidade": 20,
       "preco": 20.00,
@@ -116,7 +115,7 @@ A resposta deve ter o seguinte formato: **Ainda sendo implementado**
 classDiagram
     class Restaurante {
         -Long id
-        -BufferedImage foto
+        -BufferedImage fotoUrl
         -String nome
         -String endereco
     }
@@ -128,7 +127,7 @@ classDiagram
     }
     class Produto {
         -Long id
-        -BufferedImage foto
+        -BufferedImage fotoUrl
         -String nome
         -int quantidade
         -BigDecimal preco
