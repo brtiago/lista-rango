@@ -1,35 +1,44 @@
 package dev.tiago.lista_rango.model;
 
-import java.time.LocalDateTime;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.time.LocalTime;
 
+@Entity
 public class IntervaloTempo {
-    private final LocalDateTime horarioAbertura;
-    private final LocalDateTime horarioFechamento;
+    private LocalTime abertura;
+    private LocalTime fechamento;
 
-    public IntervaloTempo(LocalDateTime horarioAbertura, LocalDateTime horarioFechamento) {
-        this.horarioAbertura = horarioAbertura;
-        this.horarioFechamento = horarioFechamento;
-        validarIntervalo();
+    @Id
+    private Long id;
+
+    public IntervaloTempo(LocalTime abertura, LocalTime fechamento) {
+        this.abertura = abertura;
+        this.fechamento = fechamento;
     }
 
-    private void validarIntervalo() {
-        if(!isIntervalValid(horarioAbertura) || !isIntervalValid(horarioFechamento)){
-            throw new IllegalArgumentException("Os horários devem estar em intervalos de 15 minutos.");
+    public LocalTime getAbertura() {
+        return abertura;
+    }
+
+    public LocalTime getFechamento() {
+        return fechamento;
+    }
+
+    private void validateTimeIntervals() {
+        if (abertura == null || fechamento == null) {
+            throw new IllegalArgumentException("Os horários de abertura e fechamento não podem ser nulos.");
+        }
+
+        if (!isValidTimeInterval(abertura) || !isValidTimeInterval(fechamento)) {
+            throw new IllegalArgumentException("Os horários de abertura e fechamento devem estar alinhados com intervalos de 15 minutos.");
         }
     }
 
-    private boolean isIntervalValid(LocalDateTime dateTime) {
-        int minutes = dateTime.getMinute();
-
-        return minutes % 15 == 0;
+    private boolean isValidTimeInterval(LocalTime time) {
+        // Verifica se os minutos estão alinhados com o intervalo de 15 minutos
+        return time.getMinute() % 15 == 0;
     }
 
-    public LocalDateTime getHorarioAbertura() {
-        return horarioAbertura;
-    }
-
-    public LocalDateTime getHorarioFechamento() {
-        return horarioFechamento;
-    }
 }
